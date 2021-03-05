@@ -155,14 +155,14 @@
           "label": "Error bar color 1",
           "type": "BORDER_COLOR",
           "defaultValue": {
-            "color": ""
+            "color": "#000000"
           }
         },
         {
           "id": "errorOpacity1",
           "label": "Error bar opacity 1",
           "type": "OPACITY",
-          "defaultValue": "0.1"
+          "defaultValue": "1"
         },
         {
           "id": "errorLineWeight1",
@@ -174,7 +174,7 @@
           "id": "errorBarWidth1",
           "label": "Error bar width 1",
           "type": "LINE_WEIGHT",
-          "defaultValue": "2"
+          "defaultValue": "5"
         }
       ]
     }
@@ -196,14 +196,14 @@
           "label": "Error bar color 2",
           "type": "BORDER_COLOR",
           "defaultValue": {
-            "color": ""
+            "color": "#000000"
           }
         },
         {
           "id": "errorOpacity2",
           "label": "Error bar opacity 2",
           "type": "OPACITY",
-          "defaultValue": "0.1"
+          "defaultValue": "1"
         },
         {
           "id": "errorLineWeight2",
@@ -215,7 +215,7 @@
           "id": "errorBarWidth2",
           "label": "Error bar width 2",
           "type": "LINE_WEIGHT",
-          "defaultValue": "2"
+          "defaultValue": "5"
         }
       ]
     }
@@ -237,14 +237,14 @@
           "label": "Error bar color 3",
           "type": "BORDER_COLOR",
           "defaultValue": {
-            "color": ""
+            "color": "#000000"
           }
         },
         {
           "id": "errorOpacity3",
           "label": "Error bar opacity 3",
           "type": "OPACITY",
-          "defaultValue": "0.1"
+          "defaultValue": "1"
         },
         {
           "id": "errorLineWeight3",
@@ -256,7 +256,7 @@
           "id": "errorBarWidth3",
           "label": "Error bar width 3",
           "type": "LINE_WEIGHT",
-          "defaultValue": "2"
+          "defaultValue": "5"
         }
       ]
     }
@@ -278,14 +278,14 @@
           "label": "Error bar color 4",
           "type": "BORDER_COLOR",
           "defaultValue": {
-            "color": ""
+            "color": "#000000"
           }
         },
         {
           "id": "errorOpacity4",
           "label": "Error bar opacity 4",
           "type": "OPACITY",
-          "defaultValue": "0.1"
+          "defaultValue": "1"
         },
         {
           "id": "errorLineWeight4",
@@ -297,7 +297,7 @@
           "id": "errorBarWidth4",
           "label": "Error bar width 4",
           "type": "LINE_WEIGHT",
-          "defaultValue": "2"
+          "defaultValue": "5"
         }
       ]
     }
@@ -319,14 +319,14 @@
           "label": "Error bar color 5",
           "type": "BORDER_COLOR",
           "defaultValue": {
-            "color": ""
+            "color": "#000000"
           }
         },
         {
           "id": "errorOpacity5",
           "label": "Error bar opacity 5",
           "type": "OPACITY",
-          "defaultValue": "0.1"
+          "defaultValue": "1"
         },
         {
           "id": "errorLineWeight5",
@@ -338,7 +338,7 @@
           "id": "errorBarWidth5",
           "label": "Error bar width 5",
           "type": "LINE_WEIGHT",
-          "defaultValue": "2"
+          "defaultValue": "5"
         }
       ]
     }
@@ -360,14 +360,14 @@
           "label": "Error bar color 6",
           "type": "BORDER_COLOR",
           "defaultValue": {
-            "color": ""
+            "color": "#000000"
           }
         },
         {
           "id": "errorOpacity6",
           "label": "Error bar opacity 6",
           "type": "OPACITY",
-          "defaultValue": "0.1"
+          "defaultValue": "1"
         },
         {
           "id": "errorLineWeight6",
@@ -379,7 +379,7 @@
           "id": "errorBarWidth6",
           "label": "Error bar width 6",
           "type": "LINE_WEIGHT",
-          "defaultValue": "2"
+          "defaultValue": "5"
         }
       ]
     }
@@ -401,14 +401,14 @@
           "label": "Error bar color 7",
           "type": "BORDER_COLOR",
           "defaultValue": {
-            "color": ""
+            "color": "#000000"
           }
         },
         {
           "id": "errorOpacity7",
           "label": "Error bar opacity 7",
           "type": "OPACITY",
-          "defaultValue": "0.1"
+          "defaultValue": "1"
         },
         {
           "id": "errorLineWeight7",
@@ -420,7 +420,7 @@
           "id": "errorBarWidth7",
           "label": "Error bar width 7",
           "type": "LINE_WEIGHT",
-          "defaultValue": "2"
+          "defaultValue": "5"
         }
       ]
     }
@@ -442,14 +442,14 @@
           "label": "Error bar color 8",
           "type": "BORDER_COLOR",
           "defaultValue": {
-            "color": ""
+            "color": "#000000"
           }
         },
         {
           "id": "errorOpacity8",
           "label": "Error bar opacity 8",
           "type": "OPACITY",
-          "defaultValue": "0.1"
+          "defaultValue": "1"
         },
         {
           "id": "errorLineWeight8",
@@ -461,7 +461,7 @@
           "id": "errorBarWidth8",
           "label": "Error bar width 8",
           "type": "LINE_WEIGHT",
-          "defaultValue": "2"
+          "defaultValue": "5"
         }
       ]
     }
@@ -483,14 +483,14 @@
           "label": "Error bar color 9",
           "type": "BORDER_COLOR",
           "defaultValue": {
-            "color": ""
+            "color": "#000000"
           }
         },
         {
           "id": "errorOpacity9",
           "label": "Error bar opacity 9",
           "type": "OPACITY",
-          "defaultValue": "0.1"
+          "defaultValue": "1"
         },
         {
           "id": "errorLineWeight9",
@@ -502,7 +502,7 @@
           "id": "errorBarWidth9",
           "label": "Error bar width 9",
           "type": "LINE_WEIGHT",
-          "defaultValue": "2"
+          "defaultValue": "5"
         }
       ]
     }
@@ -524,14 +524,14 @@
           "label": "Error bar color 10",
           "type": "BORDER_COLOR",
           "defaultValue": {
-            "color": ""
+            "color": "#000000"
           }
         },
         {
           "id": "errorOpacity10",
           "label": "Error bar opacity 10",
           "type": "OPACITY",
-          "defaultValue": "0.1"
+          "defaultValue": "1"
         },
         {
           "id": "errorLineWeight10",
@@ -543,7 +543,7 @@
           "id": "errorBarWidth10",
           "label": "Error bar width 10",
           "type": "LINE_WEIGHT",
-          "defaultValue": "2"
+          "defaultValue": "5"
         }
       ]
     }
