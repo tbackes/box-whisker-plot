@@ -1,12 +1,12 @@
 {
   "data": [
     {
-      "id": "concepts",
-      "label": "Concepts",
+      "id": "dimensions",
+      "label": "Dimensions",
       "elements": [
         {
-          "id": "dimID",
-          "label": "A dimension",
+          "id": "dimension",
+          "label": "Dimension",
           "type": "DIMENSION",
           "options": {
             "min": 1,
@@ -14,16 +14,388 @@
           }
         },
         {
-          "id": "metricID",
-          "label": "A metric",
+          "id": "dimension_breakdown",
+          "label": "Breakdown Dimension",
+          "type": "DIMENSION",
+          "options": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "metrics",
+      "label": "Metric",
+      "elements": [
+        {
+          "id": "box_center",
+          "label": "Metric",
           "type": "METRIC",
           "options": {
             "min": 1,
+            "max": 1
+          }
+        },
+        {
+          "id": "box_lower",
+          "label": "Bar Lower Bound",
+          "type": "METRIC",
+          "options": {
+            "min": 1,
+            "max": 1
+          }
+        },
+        {
+          "id": "box_upper",
+          "label": "Bar Upper Bound",
+          "type": "METRIC",
+          "options": {
+            "min": 1,
+            "max": 1
+          }
+        },
+        {
+          "id": "whisker_lower",
+          "label": "Whisker Lower Bound",
+          "type": "METRIC",
+          "options": {
+            "min": 0,
+            "max": 1
+          }
+        },
+        {
+          "id": "whisker_upper",
+          "label": "Whisker Upper Bound",
+          "type": "METRIC",
+          "options": {
+            "min": 0,
+            "max": 1
+          }
+        },
+        {
+          "id": "box_mean",
+          "label": "Mean",
+          "type": "METRIC",
+          "options": {
+            "min": 0,
+            "max": 1
+          }
+        },
+        {
+          "id": "box_std",
+          "label": "Std. deviation",
+          "type": "METRIC",
+          "options": {
+            "min": 0,
+            "max": 1
+          }
+        },
+        {
+          "id": "box_notchspan",
+          "label": "Notch span",
+          "type": "METRIC",
+          "options": {
+            "min": 0,
             "max": 1
           }
         }
       ]
     }
   ],
-  "style": [ ]
+  "style": [
+    {
+      "id": "chartStyle",
+      "label": "Chart",
+      "elements": [
+        {
+          "id": "chartTitle",
+          "label": "Chart Title",
+          "type": "TEXTINPUT",
+          "defaultValue": ""
+        },
+        {
+          "id": "legendTitle",
+          "label": "Legend Title",
+          "type": "TEXTINPUT",
+          "defaultValue": ""
+        },
+        {
+          "id": "legendOrientation",
+          "label": "Legend Orientation",
+          "type": "SELECT_RADIO",
+          "defaultValue": "v",
+          "options": [
+            {
+              "label": "Vertical",
+              "value": "v"
+            },
+            {
+              "label": "Horizontal (Top)",
+              "value": "h"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xAxis",
+      "label": "X-Axis",
+      "elements": [
+        {
+          "id": "xAxisDate",
+          "label": "Is x-axis a date?",
+          "type": "CHECKBOX",
+          "defaultValue": "false"
+        },
+        {
+          "id": "xLabel",
+          "label": "Axis Title",
+          "type": "TEXTINPUT",
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "id": "yAxis",
+      "label": "Y-Axis",
+      "elements": [
+        {
+          "id": "yMin",
+          "label": "Axis Min",
+          "type": "TEXTINPUT",
+          "defaultValue": "null"
+        },
+        {
+          "id": "yMax",
+          "label": "Axis Max",
+          "type": "TEXTINPUT",
+          "defaultValue": "null"
+        },
+        {
+          "id": "yLabel",
+          "label": "Axis Title",
+          "type": "TEXTINPUT",
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "id": "hoverText",
+      "label": "Hover Text",
+      "elements": [
+        {
+          "id": "hoverCustom",
+          "label": "Display custom hover text?",
+          "type": "SELECT_RADIO",
+          "defaultValue": "0",
+          "options": [
+            {
+              "label": "Use default",
+              "value": "0"
+            },
+            {
+              "label": "Custom (see below)",
+              "value": "1"
+            },
+            {
+              "label": "None",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "id": "hoverCenter",
+          "label": "Custom hover: display center value?",
+          "type": "CHECKBOX",
+          "defaultValue": "true"
+        },
+        {
+          "id": "hoverBar",
+          "label": "Custom hover: display q1/q3 values?",
+          "type": "CHECKBOX",
+          "defaultValue": "true"
+        },
+        {
+          "id": "hoverWhisker",
+          "label": "Custom hover: display whisker values?",
+          "type": "CHECKBOX",
+          "defaultValue": "true"
+        },
+        {
+          "id": "hoverMean",
+          "label": "Custom hover: display mean?",
+          "type": "CHECKBOX",
+          "defaultValue": "true"
+        },
+        {
+          "id": "hoverStd",
+          "label": "Custom hover: display std. deviation?",
+          "type": "CHECKBOX",
+          "defaultValue": "true"
+        }
+      ]
+    },
+    {
+      "id": "numberFormats",
+      "label": "Number Formatting",
+      "elements": [
+        {
+          "id": "metricFormatString",
+          "label": "Format String for y-axis and hovertext",
+          "type": "TEXTINPUT",
+          "defaultValue": ",.0f"
+        }
+      ]
+    },
+    {
+      "id": "metricStyles1",
+      "label": "Metric #1",
+      "elements": [
+        {
+          "id": "metricColor1",
+          "label": "Box Color 1",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles2",
+      "label": "Metric #2",
+      "elements": [
+        {
+          "id": "metricColor2",
+          "label": "Box Color 2",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles3",
+      "label": "Metric #3",
+      "elements": [
+        {
+          "id": "metricColor3",
+          "label": "Box Color 3",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles4",
+      "label": "Metric #4",
+      "elements": [
+        {
+          "id": "metricColor4",
+          "label": "Box Color 4",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles5",
+      "label": "Metric #5",
+      "elements": [
+        {
+          "id": "metricColor5",
+          "label": "Box Color 5",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles6",
+      "label": "Metric #6",
+      "elements": [
+        {
+          "id": "metricColor6",
+          "label": "Box Color 6",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles7",
+      "label": "Metric #7",
+      "elements": [
+        {
+          "id": "metricColor7",
+          "label": "Box Color 7",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles8",
+      "label": "Metric #8",
+      "elements": [
+        {
+          "id": "metricColor8",
+          "label": "Box Color 8",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles9",
+      "label": "Metric #9",
+      "elements": [
+        {
+          "id": "metricColor9",
+          "label": "Box Color 9",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles10",
+      "label": "Metric #10",
+      "elements": [
+        {
+          "id": "metricColor10",
+          "label": "Box Color 10",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        }
+      ]
+    }
+  ]  
 }
