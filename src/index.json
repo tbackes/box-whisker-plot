@@ -29,7 +29,7 @@
       "label": "Metric",
       "elements": [
         {
-          "id": "box_center",
+          "id": "metric",
           "label": "Metric",
           "type": "METRIC",
           "options": {
@@ -38,66 +38,12 @@
           }
         },
         {
-          "id": "box_lower",
-          "label": "Bar Lower Bound",
+          "id": "metric_error",
+          "label": "Error bar offset",
           "type": "METRIC",
           "options": {
             "min": 1,
-            "max": 1
-          }
-        },
-        {
-          "id": "box_upper",
-          "label": "Bar Upper Bound",
-          "type": "METRIC",
-          "options": {
-            "min": 1,
-            "max": 1
-          }
-        },
-        {
-          "id": "whisker_lower",
-          "label": "Whisker Lower Bound",
-          "type": "METRIC",
-          "options": {
-            "min": 0,
-            "max": 1
-          }
-        },
-        {
-          "id": "whisker_upper",
-          "label": "Whisker Upper Bound",
-          "type": "METRIC",
-          "options": {
-            "min": 0,
-            "max": 1
-          }
-        },
-        {
-          "id": "box_mean",
-          "label": "Mean",
-          "type": "METRIC",
-          "options": {
-            "min": 0,
-            "max": 1
-          }
-        },
-        {
-          "id": "box_std",
-          "label": "Std. deviation",
-          "type": "METRIC",
-          "options": {
-            "min": 0,
-            "max": 1
-          }
-        },
-        {
-          "id": "box_notchspan",
-          "label": "Notch span",
-          "type": "METRIC",
-          "options": {
-            "min": 0,
-            "max": 1
+            "max": 2
           }
         }
       ]
@@ -181,62 +127,6 @@
       ]
     },
     {
-      "id": "hoverText",
-      "label": "Hover Text",
-      "elements": [
-        {
-          "id": "hoverCustom",
-          "label": "Display custom hover text?",
-          "type": "SELECT_RADIO",
-          "defaultValue": "0",
-          "options": [
-            {
-              "label": "Use default",
-              "value": "0"
-            },
-            {
-              "label": "Custom (see below)",
-              "value": "1"
-            },
-            {
-              "label": "None",
-              "value": "2"
-            }
-          ]
-        },
-        {
-          "id": "hoverCenter",
-          "label": "Custom hover: display center value?",
-          "type": "CHECKBOX",
-          "defaultValue": "true"
-        },
-        {
-          "id": "hoverBar",
-          "label": "Custom hover: display q1/q3 values?",
-          "type": "CHECKBOX",
-          "defaultValue": "true"
-        },
-        {
-          "id": "hoverWhisker",
-          "label": "Custom hover: display whisker values?",
-          "type": "CHECKBOX",
-          "defaultValue": "true"
-        },
-        {
-          "id": "hoverMean",
-          "label": "Custom hover: display mean?",
-          "type": "CHECKBOX",
-          "defaultValue": "true"
-        },
-        {
-          "id": "hoverStd",
-          "label": "Custom hover: display std. deviation?",
-          "type": "CHECKBOX",
-          "defaultValue": "true"
-        }
-      ]
-    },
-    {
       "id": "numberFormats",
       "label": "Number Formatting",
       "elements": [
@@ -253,12 +143,38 @@
       "label": "Metric #1",
       "elements": [
         {
-          "id": "metricColor1",
-          "label": "Box Color 1",
+          "id": "barColor1",
+          "label": "Main bar color 1",
           "type": "BORDER_COLOR",
           "defaultValue": {
             "color": ""
           }
+        },
+        {
+          "id": "errorColor1",
+          "label": "Error bar color 1",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity1",
+          "label": "Error bar opacity 1",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight1",
+          "label": "Error bar line weight 1",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth1",
+          "label": "Error bar width 1",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
         }
       ]
     }
@@ -268,12 +184,38 @@
       "label": "Metric #2",
       "elements": [
         {
-          "id": "metricColor2",
-          "label": "Box Color 2",
+          "id": "barColor2",
+          "label": "Main bar color 2",
           "type": "BORDER_COLOR",
           "defaultValue": {
             "color": ""
           }
+        },
+        {
+          "id": "errorColor2",
+          "label": "Error bar color 2",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity2",
+          "label": "Error bar opacity 2",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight2",
+          "label": "Error bar line weight 2",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth2",
+          "label": "Error bar width 2",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
         }
       ]
     }
@@ -283,12 +225,38 @@
       "label": "Metric #3",
       "elements": [
         {
-          "id": "metricColor3",
-          "label": "Box Color 3",
+          "id": "barColor3",
+          "label": "Main bar color 3",
           "type": "BORDER_COLOR",
           "defaultValue": {
             "color": ""
           }
+        },
+        {
+          "id": "errorColor3",
+          "label": "Error bar color 3",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity3",
+          "label": "Error bar opacity 3",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight3",
+          "label": "Error bar line weight 3",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth3",
+          "label": "Error bar width 3",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
         }
       ]
     }
@@ -298,12 +266,38 @@
       "label": "Metric #4",
       "elements": [
         {
-          "id": "metricColor4",
-          "label": "Box Color 4",
+          "id": "barColor4",
+          "label": "Main bar color 4",
           "type": "BORDER_COLOR",
           "defaultValue": {
             "color": ""
           }
+        },
+        {
+          "id": "errorColor4",
+          "label": "Error bar color 4",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity4",
+          "label": "Error bar opacity 4",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight4",
+          "label": "Error bar line weight 4",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth4",
+          "label": "Error bar width 4",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
         }
       ]
     }
@@ -313,12 +307,38 @@
       "label": "Metric #5",
       "elements": [
         {
-          "id": "metricColor5",
-          "label": "Box Color 5",
+          "id": "barColor5",
+          "label": "Main bar color 5",
           "type": "BORDER_COLOR",
           "defaultValue": {
             "color": ""
           }
+        },
+        {
+          "id": "errorColor5",
+          "label": "Error bar color 5",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity5",
+          "label": "Error bar opacity 5",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight5",
+          "label": "Error bar line weight 5",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth5",
+          "label": "Error bar width 5",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
         }
       ]
     }
@@ -328,12 +348,38 @@
       "label": "Metric #6",
       "elements": [
         {
-          "id": "metricColor6",
-          "label": "Box Color 6",
+          "id": "barColor6",
+          "label": "Main bar color 6",
           "type": "BORDER_COLOR",
           "defaultValue": {
             "color": ""
           }
+        },
+        {
+          "id": "errorColor6",
+          "label": "Error bar color 6",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity6",
+          "label": "Error bar opacity 6",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight6",
+          "label": "Error bar line weight 6",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth6",
+          "label": "Error bar width 6",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
         }
       ]
     }
@@ -343,12 +389,38 @@
       "label": "Metric #7",
       "elements": [
         {
-          "id": "metricColor7",
-          "label": "Box Color 7",
+          "id": "barColor7",
+          "label": "Main bar color 7",
           "type": "BORDER_COLOR",
           "defaultValue": {
             "color": ""
           }
+        },
+        {
+          "id": "errorColor7",
+          "label": "Error bar color 7",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity7",
+          "label": "Error bar opacity 7",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight7",
+          "label": "Error bar line weight 7",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth7",
+          "label": "Error bar width 7",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
         }
       ]
     }
@@ -358,12 +430,38 @@
       "label": "Metric #8",
       "elements": [
         {
-          "id": "metricColor8",
-          "label": "Box Color 8",
+          "id": "barColor8",
+          "label": "Main bar color 8",
           "type": "BORDER_COLOR",
           "defaultValue": {
             "color": ""
           }
+        },
+        {
+          "id": "errorColor8",
+          "label": "Error bar color 8",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity8",
+          "label": "Error bar opacity 8",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight8",
+          "label": "Error bar line weight 8",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth8",
+          "label": "Error bar width 8",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
         }
       ]
     }
@@ -373,12 +471,38 @@
       "label": "Metric #9",
       "elements": [
         {
-          "id": "metricColor9",
-          "label": "Box Color 9",
+          "id": "barColor9",
+          "label": "Main bar color 9",
           "type": "BORDER_COLOR",
           "defaultValue": {
             "color": ""
           }
+        },
+        {
+          "id": "errorColor9",
+          "label": "Error bar color 9",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity9",
+          "label": "Error bar opacity 9",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight9",
+          "label": "Error bar line weight 9",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth9",
+          "label": "Error bar width 9",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
         }
       ]
     }
@@ -388,12 +512,38 @@
       "label": "Metric #10",
       "elements": [
         {
-          "id": "metricColor10",
-          "label": "Box Color 10",
+          "id": "barColor10",
+          "label": "Main bar color 10",
           "type": "BORDER_COLOR",
           "defaultValue": {
             "color": ""
           }
+        },
+        {
+          "id": "errorColor10",
+          "label": "Error bar color 10",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity10",
+          "label": "Error bar opacity 10",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight10",
+          "label": "Error bar line weight 10",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth10",
+          "label": "Error bar width 10",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
         }
       ]
     }

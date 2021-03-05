@@ -30,7 +30,7 @@ const styleVal = (message, styleId) => {
 // parse a style color -- defaulting to the theme color if applicable
 const themeColor = (message, styleId, themeId='themeSeriesColor', idx=null) => {
   // if a user specifed value is present, keep that
-  if (message.style[styleId].value.color !== undefined) {
+  if (message.style[styleId].value.color !== undefined && !isNull(message.style[styleId].value.color)) {
     return message.style[styleId].value.color;
   }
   // otherwise use the theme color
@@ -124,14 +124,6 @@ const drawViz = message => {
   const yLabel = styleVal(message, 'yLabel');
   const metricFmt = styleVal(message, 'metricFormatString');
 
-  // gather flags for which data is present
-  // -------------------------
-  const hasWhiskerUpper = hasMetric(message, 'whisker_upper');
-  const hasWhiskerLower = hasMetric(message, 'whisker_lower');
-  const hasMean = hasMetric(message, 'box_mean');
-  const hasStd = hasMetric(message, 'box_std');
-  const hasNotchspan = hasMetric(message, 'box_notchspan');
-
   // get unique breakdown groups
   // -------------------------
   let breakdown_values = [];
@@ -155,74 +147,59 @@ const drawViz = message => {
     n_groups = 1;
   }
 
-  // Gather data for hovertext
-  // -------------------------
-  const hovertype = styleVal(message, 'hoverCustom')
-
-  // the customdata array is used to supply all the values that will be displayed
-  // in the custom hovertext; plotly cannot handle actual null values in 
-  // customdata, so any missing values are replaced with a string. plotly will
-  // displays all strings as NaN in the hovertext.
-  const customdata = message.tables.DEFAULT.map(d => [
-    hasWhiskerUpper && isNumeric(d.whisker_upper[0]) ? d.whisker_upper[0] : 'null', 
-    d.box_upper[0], 
-    d.box_center[0], 
-    d.box_lower[0], 
-    hasWhiskerLower && isNumeric(d.whisker_lower[0]) ? d.whisker_lower[0] : 'null', 
-    hasMean && isNumeric(d.box_mean[0]) ? d.box_mean[0] : 'null', 
-    hasStd && isNumeric(d.box_std[0]) ? d.box_std[0] : 'null'
-    ]); 
-  const column_names = ['whisker_upper', 'box_upper', 'box_center', 'box_lower', 'whisker_lower', 'box_mean', 'box_std'];
-  const include_column = ['hoverWhisker', 'hoverBar', 'hoverCenter', 'hoverBar', 'hoverWhisker', 'hoverMean', 'hoverStd'];
-
-  // create hovertext that includes each of the user-specified elements on its own line
-  let hovertemp = []
-  let i;
-  for (i=0; i<5; i++){
-    if (hasMetric(message,column_names[i]) && styleVal(message, include_column[i])){
-      hovertemp.push(`${message.fields[column_names[i]][0].name}: %{customdata[${i}]:${metricFmt}}`);
-    }
-  }
-  // separate logic for mean & std. dev.
-  if (styleVal(message, 'hoverMean') && styleVal(message, 'hoverStd') && hasMean && hasStd){
-    hovertemp.push(`Mean ± σ: %{customdata[5]:${metricFmt}} ± %{customdata[6]:${metricFmt}}`);
-  }
-  else if (styleVal(message, 'hoverMean') && hasMean){
-    hovertemp.push(`${message.fields.box_mean[0].name}: %{customdata[5]:${metricFmt}}`);
-  }
-  else if (styleVal(message, 'hoverStd') && hasStd){
-    hovertemp.push(`${message.fields.box_std[0].name}: %{customdata[6]:${metricFmt}}`);
-  }
-  const hovertemplate = hovertemp.join('<br>');
-
   // Gather data for x-axis
   // -------------------------
   const xData = xAxisDate
     ? message.tables.DEFAULT.map(d => toDate(d.dimension[0])) 
     : message.tables.DEFAULT.map(d => d.dimension[0]);
 
+  // Gather data for error bars
+  // -------------------------
+  const error_y = {
+  	type: 'data',
+  	visible: true, 
+  	array: message.tables.DEFAULT.map(d => d.metric_error[0])
+  };
+  // if a second error offset is provided, use asymmetric error bars
+  // with the second series as the lower offset
+  if (message.fields.metric_error.length > 1) {
+  	error_y.arrayminus = message.tables.DEFAULT.map(d => d.metric_error[1]);
+  	error_y.symmetric = false;
+  }
+
+
   // loop through breakdown groups and add traces
   // -------------------------
   let data = []
+  let i;
   // const n_groups = 1
   for (i=0; i<n_groups; i++){
+    console.log(i)
     // Gather all style parameters for series
-    const metricLineColor =  themeColor(message, 'metricColor'+(i+1), 'themeSeriesColor', i);
+    const barColor =  themeColor(message, 'barColor'+(i+1), 'themeSeriesColor', i);
+    console.log(barColor)
+    const errorLineWeight =  styleVal(message, 'errorLineWeight'+(i+1));
+    console.log(errorLineWeight)
+    const errorBarWidth =  styleVal(message, 'errorBarWidth'+(i+1));
+    console.log(errorBarWidth)
+    const errorColor =  themeColor(message, 'errorColor'+(i+1), 'themeSeriesColor', i);
+    console.log(errorColor)
+    const errorOpacity = styleVal(message, 'errorOpacity'+(i+1));
+    console.log(errorOpacity)
 
     // trace for metric trend line
     const trace_box = {
-      type: 'box',
-      name: 'test',
+      type: 'bar',
       x: xData,
-      q1: message.tables.DEFAULT.map(d => d.box_lower[0]),
-      median: message.tables.DEFAULT.map(d => d.box_center[0]),
-      q3: message.tables.DEFAULT.map(d => d.box_upper[0]),
-      lowerfence: hasWhiskerLower ? message.tables.DEFAULT.map(d => d.whisker_lower[0]) : null,
-      upperfence: hasWhiskerUpper ? message.tables.DEFAULT.map(d => d.whisker_upper[0]) : null,
-      mean: hasMean ? message.tables.DEFAULT.map(d => d.box_mean[0]) : null,
-      sd: hasStd ? message.tables.DEFAULT.map(d => d.box_std[0]) : null,
-      notchspan: hasNotchspan ? message.tables.DEFAULT.map(d => d.box_notchspan[0]) : null,
-      marker : {color: metricLineColor},
+      y: message.tables.DEFAULT.map(d => d.metric[0]),
+      error_y: Object.assign({}, error_y,
+        {
+          color: errorColor,
+          thickness: errorLineWeight,
+          width: errorBarWidth,
+          opacity: errorOpacity
+        }),
+      marker : {color: barColor},
       transforms: !has_breakdown ? [] : [{
       	type: 'filter',
       	target: message.tables.DEFAULT.map(d => d.dimension_breakdown[0]),
@@ -233,51 +210,19 @@ const drawViz = message => {
       legendgroup: has_breakdown ? breakdown_values[i] : 'None', 
       offsetgroup: has_offset ? `${i}` : 0, 
       showlegend: has_breakdown ? true : false,
-      hoverinfo: hovertype == 0 ? 'y+name' : 'skip'
+      hoverinfo: 'y+name'
       // hovertemplate
     };
 
     data.push(trace_box);
 
-    // add a separate bar trace if the user specified custom hover text
-    if (hovertype==1){
-      // add trace at each box limit,
-      let j;
-      let hover_bar = {};
-      for (j=0; j<column_names.length; j++){
-        // check if data is available
-        if (hasMetric(message,column_names[j]) && styleVal(message, include_column[j])){
-          hover_bar = {
-            type: 'bar',
-            name: 'test',
-            x: xData,
-            y: message.tables.DEFAULT.map(d => d[column_names[j]][0]),
-            customdata: customdata,
-            marker : {color: metricLineColor},
-            transforms: !has_breakdown ? [] : [{
-              type: 'filter',
-              target: message.tables.DEFAULT.map(d => d.dimension_breakdown[0]),
-              operation: '=',
-              value: breakdown_values[i]
-            }],
-            name: has_breakdown ? breakdown_values[i] : '',
-            opacity: 0,
-            offsetgroup: has_offset ? `${i}` : 0, 
-            showlegend: false,
-            hovertemplate: hovertemplate + `<extra>${has_breakdown ? breakdown_values[i] : ''}</extra>`
-          };
-
-          data.push(hover_bar);
-        }
-      }
-    }
   }
 
   // Chart Titles
   // -------------------------
   const chartTitleLayout = isNull(chartTitle) ? {} : {text: chartTitle};
   const xAxisLayout = isNull(xLabel) ? {} : {title: {text: xLabel}};
-  const yAxisLayout = isNull(yLabel) ? {} : {title: {text: yLabel}};
+  const yAxisLayout = isNull(yLabel) ? {tickformat: metricFmt} : {title: {text: yLabel}, tickformat: metricFmt};
 
   // format y-axis range
   // -------------------------
@@ -286,13 +231,11 @@ const drawViz = message => {
     yAxisLayout.range = 'auto'
   }
   else if (!isNumeric(yAxisMin)){
-    yAxisMetric = hasWhiskerLower ? 'whisker_lower' : 'box_lower';
-    const minValue = Math.min.apply(Math, message.tables.DEFAULT.map(function(d) {return Math.min(...d[yAxisMetric])}));
+    const minValue = Math.min.apply(Math, message.tables.DEFAULT.map(function(d) {return Math.min(...(d.metric - d.metric_error))}));
     yAxisLayout.range = [Math.floor(0.9*minValue), yAxisMax];
   }
   else if (!isNumeric(yAxisMax)){
-    yAxisMetric = hasWhiskerUpper ? 'whisker_upper' : 'box_upper';
-    const maxValue = Math.max.apply(Math, message.tables.DEFAULT.map(function(d) {return Math.max(...d[yAxisMetric])}));
+    const maxValue = Math.max.apply(Math, message.tables.DEFAULT.map(function(d) {return Math.max(...(d.metric + d.metric_error))}));
     yAxisLayout.range = [yAxisMin, Math.ceil(1.1*maxValue)];
   }
   else{

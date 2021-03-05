@@ -8,7 +8,7 @@ export const message = {
         "dimension_breakdown": [
           "A"
         ],
-        "box_center": [
+        "metric": [
           1.35
         ],
         "box_lower": [
@@ -26,10 +26,8 @@ export const message = {
         "box_mean": [
           1.35
         ],
-        "box_std": [
-          0.03
-        ],
-        "box_notchspan": [
+        "metric_error": [
+          0.03, 
           0.3
         ]
       },
@@ -40,7 +38,7 @@ export const message = {
         "dimension_breakdown": [
           "B"
         ],
-        "box_center": [
+        "metric": [
           1.3
         ],
         "box_lower": [
@@ -58,10 +56,8 @@ export const message = {
         "box_mean": [
           1.1
         ],
-        "box_std": [
-          0.02
-        ],
-        "box_notchspan": [
+        "metric_error": [
+          0.02, 
           0.2
         ]
       },
@@ -72,7 +68,7 @@ export const message = {
         "dimension_breakdown": [
           "C"
         ],
-        "box_center": [
+        "metric": [
           0
         ],
         "box_lower": [
@@ -90,10 +86,8 @@ export const message = {
         "box_mean": [
           0.05
         ],
-        "box_std": [
-          0.01
-        ],
-        "box_notchspan": [
+        "metric_error": [
+          0.01, 
           0.1
         ]
       },
@@ -104,7 +98,7 @@ export const message = {
         "dimension_breakdown": [
           "A"
         ],
-        "box_center": [
+        "metric": [
           0.75
         ],
         "box_lower": [
@@ -122,10 +116,8 @@ export const message = {
         "box_mean": [
           0.6
         ],
-        "box_std": [
-          0.06
-        ],
-        "box_notchspan": [
+        "metric_error": [
+          0.06, 
           0.6
         ]
       },
@@ -136,7 +128,7 @@ export const message = {
         "dimension_breakdown": [
           "B"
         ],
-        "box_center": [
+        "metric": [
           2.5
         ],
         "box_lower": [
@@ -154,10 +146,8 @@ export const message = {
         "box_mean": [
           2.6
         ],
-        "box_std": [
-          0.05
-        ],
-        "box_notchspan": [
+        "metric_error": [
+          0.05, 
           0.5
         ]
       },
@@ -168,7 +158,7 @@ export const message = {
         "dimension_breakdown": [
           "C"
         ],
-        "box_center": [
+        "metric": [
           -0.15
         ],
         "box_lower": [
@@ -186,10 +176,8 @@ export const message = {
         "box_mean": [
           -0.2
         ],
-        "box_std": [
-          0.04
-        ],
-        "box_notchspan": [
+        "metric_error": [
+          0.04, 
           0.4
         ]
       }
@@ -212,7 +200,7 @@ export const message = {
         "concept": "DIMENSION"
       }
     ],
-    "box_center": [
+    "metric": [
       {
         "id": "qt_4ehxeqkjhc",
         "name": "metric",
@@ -260,15 +248,13 @@ export const message = {
         "concept": "METRIC"
       }
     ],
-    "box_std": [
+    "metric_error": [
       {
         "id": "qt_q97ssdvkhc",
         "name": "sd",
         "type": "NUMBER",
         "concept": "METRIC"
-      }
-    ],
-    "box_notchspan": [
+      }, 
       {
         "id": "qt_12utwdvkhc",
         "name": "notch_span",
@@ -338,45 +324,89 @@ export const message = {
       "value": ",.2f",
       "defaultValue": ",.0f"
     },
-    "metricColor1": {
-      "value": {},
-      "defaultValue": {}
+    "errorLineWeight1": {
+      "value": 2,
+      "defaultValue": 2
     },
-    "metricColor2": {
-      "value": {},
-      "defaultValue": {}
+    "barColor1": {
+      "value": {
+        "color": null
+      },
+      "defaultValue": {
+        "color": null
+      }
     },
-    "metricColor3": {
-      "value": {},
-      "defaultValue": {}
+    "errorColor1": {
+      "value": {
+        "color": "black"
+      },
+      "defaultValue": {
+        "color": null
+      }
     },
-    "metricColor4": {
-      "value": {},
-      "defaultValue": {}
+    "errorLineWeight2": {
+      "value": 2,
+      "defaultValue": 2
     },
-    "metricColor5": {
-      "value": {},
-      "defaultValue": {}
+    "barColor2": {
+      "value": {
+        "color": "#00b6cb"
+      },
+      "defaultValue": {
+        "color": null
+      }
     },
-    "metricColor6": {
-      "value": {},
-      "defaultValue": {}
+    "errorColor2": {
+      "value": {
+        "color": "black"
+      },
+      "defaultValue": {
+        "color": null
+      }
     },
-    "metricColor7": {
-      "value": {},
-      "defaultValue": {}
+    "errorLineWeight3": {
+      "value": 2,
+      "defaultValue": 2
     },
-    "metricColor8": {
-      "value": {},
-      "defaultValue": {}
+    "barColor3": {
+      "value": {
+        "color": null
+      },
+      "defaultValue": {
+        "color": null
+      }
     },
-    "metricColor9": {
-      "value": {},
-      "defaultValue": {}
+    "errorColor3": {
+      "value": {
+        "color": "black"
+      },
+      "defaultValue": {
+        "color": null
+      }
     },
-    "metricColor10": {
-      "value": {},
-      "defaultValue": {}
+    "errorOpacity1": {
+      "value": 1,
+      "defaultValue": 0.1
+    },
+    "errorOpacity2": {
+      "value": 0.9,
+      "defaultValue": 0.1
+    },
+    "errorOpacity3": {
+      "value": 0.8,
+      "defaultValue": 0.1
+    },
+    "errorBarWidth1": {
+      "value": 5,
+      "defaultValue": 0.1
+    },
+    "errorBarWidth2": {
+      "value": 6,
+      "defaultValue": 0.1
+    },
+    "errorBarWidth3": {
+      "value": 7,
+      "defaultValue": 0.1
     }
   },
   "theme": {

@@ -1,12 +1,12 @@
 {
   "data": [
     {
-      "id": "concepts",
-      "label": "Concepts",
+      "id": "dimensions",
+      "label": "Dimensions",
       "elements": [
         {
-          "id": "dimID",
-          "label": "A dimension",
+          "id": "dimension",
+          "label": "Dimension",
           "type": "DIMENSION",
           "options": {
             "min": 1,
@@ -14,16 +14,538 @@
           }
         },
         {
-          "id": "metricID",
-          "label": "A metric",
+          "id": "dimension_breakdown",
+          "label": "Breakdown Dimension",
+          "type": "DIMENSION",
+          "options": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "metrics",
+      "label": "Metric",
+      "elements": [
+        {
+          "id": "metric",
+          "label": "Metric",
           "type": "METRIC",
           "options": {
             "min": 1,
             "max": 1
           }
+        },
+        {
+          "id": "metric_error",
+          "label": "Error bar offset",
+          "type": "METRIC",
+          "options": {
+            "min": 1,
+            "max": 2
+          }
         }
       ]
     }
   ],
-  "style": [ ]
+  "style": [
+    {
+      "id": "chartStyle",
+      "label": "Chart",
+      "elements": [
+        {
+          "id": "chartTitle",
+          "label": "Chart Title",
+          "type": "TEXTINPUT",
+          "defaultValue": ""
+        },
+        {
+          "id": "legendTitle",
+          "label": "Legend Title",
+          "type": "TEXTINPUT",
+          "defaultValue": ""
+        },
+        {
+          "id": "legendOrientation",
+          "label": "Legend Orientation",
+          "type": "SELECT_RADIO",
+          "defaultValue": "v",
+          "options": [
+            {
+              "label": "Vertical",
+              "value": "v"
+            },
+            {
+              "label": "Horizontal (Top)",
+              "value": "h"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xAxis",
+      "label": "X-Axis",
+      "elements": [
+        {
+          "id": "xAxisDate",
+          "label": "Is x-axis a date?",
+          "type": "CHECKBOX",
+          "defaultValue": "false"
+        },
+        {
+          "id": "xLabel",
+          "label": "Axis Title",
+          "type": "TEXTINPUT",
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "id": "yAxis",
+      "label": "Y-Axis",
+      "elements": [
+        {
+          "id": "yMin",
+          "label": "Axis Min",
+          "type": "TEXTINPUT",
+          "defaultValue": "null"
+        },
+        {
+          "id": "yMax",
+          "label": "Axis Max",
+          "type": "TEXTINPUT",
+          "defaultValue": "null"
+        },
+        {
+          "id": "yLabel",
+          "label": "Axis Title",
+          "type": "TEXTINPUT",
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "id": "numberFormats",
+      "label": "Number Formatting",
+      "elements": [
+        {
+          "id": "metricFormatString",
+          "label": "Format String for y-axis and hovertext",
+          "type": "TEXTINPUT",
+          "defaultValue": ",.0f"
+        }
+      ]
+    },
+    {
+      "id": "metricStyles1",
+      "label": "Metric #1",
+      "elements": [
+        {
+          "id": "barColor1",
+          "label": "Main bar color 1",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorColor1",
+          "label": "Error bar color 1",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity1",
+          "label": "Error bar opacity 1",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight1",
+          "label": "Error bar line weight 1",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth1",
+          "label": "Error bar width 1",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles2",
+      "label": "Metric #2",
+      "elements": [
+        {
+          "id": "barColor2",
+          "label": "Main bar color 2",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorColor2",
+          "label": "Error bar color 2",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity2",
+          "label": "Error bar opacity 2",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight2",
+          "label": "Error bar line weight 2",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth2",
+          "label": "Error bar width 2",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles3",
+      "label": "Metric #3",
+      "elements": [
+        {
+          "id": "barColor3",
+          "label": "Main bar color 3",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorColor3",
+          "label": "Error bar color 3",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity3",
+          "label": "Error bar opacity 3",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight3",
+          "label": "Error bar line weight 3",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth3",
+          "label": "Error bar width 3",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles4",
+      "label": "Metric #4",
+      "elements": [
+        {
+          "id": "barColor4",
+          "label": "Main bar color 4",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorColor4",
+          "label": "Error bar color 4",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity4",
+          "label": "Error bar opacity 4",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight4",
+          "label": "Error bar line weight 4",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth4",
+          "label": "Error bar width 4",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles5",
+      "label": "Metric #5",
+      "elements": [
+        {
+          "id": "barColor5",
+          "label": "Main bar color 5",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorColor5",
+          "label": "Error bar color 5",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity5",
+          "label": "Error bar opacity 5",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight5",
+          "label": "Error bar line weight 5",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth5",
+          "label": "Error bar width 5",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles6",
+      "label": "Metric #6",
+      "elements": [
+        {
+          "id": "barColor6",
+          "label": "Main bar color 6",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorColor6",
+          "label": "Error bar color 6",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity6",
+          "label": "Error bar opacity 6",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight6",
+          "label": "Error bar line weight 6",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth6",
+          "label": "Error bar width 6",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles7",
+      "label": "Metric #7",
+      "elements": [
+        {
+          "id": "barColor7",
+          "label": "Main bar color 7",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorColor7",
+          "label": "Error bar color 7",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity7",
+          "label": "Error bar opacity 7",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight7",
+          "label": "Error bar line weight 7",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth7",
+          "label": "Error bar width 7",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles8",
+      "label": "Metric #8",
+      "elements": [
+        {
+          "id": "barColor8",
+          "label": "Main bar color 8",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorColor8",
+          "label": "Error bar color 8",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity8",
+          "label": "Error bar opacity 8",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight8",
+          "label": "Error bar line weight 8",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth8",
+          "label": "Error bar width 8",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles9",
+      "label": "Metric #9",
+      "elements": [
+        {
+          "id": "barColor9",
+          "label": "Main bar color 9",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorColor9",
+          "label": "Error bar color 9",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity9",
+          "label": "Error bar opacity 9",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight9",
+          "label": "Error bar line weight 9",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth9",
+          "label": "Error bar width 9",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        }
+      ]
+    }
+    ,
+    {
+      "id": "metricStyles10",
+      "label": "Metric #10",
+      "elements": [
+        {
+          "id": "barColor10",
+          "label": "Main bar color 10",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorColor10",
+          "label": "Error bar color 10",
+          "type": "BORDER_COLOR",
+          "defaultValue": {
+            "color": ""
+          }
+        },
+        {
+          "id": "errorOpacity10",
+          "label": "Error bar opacity 10",
+          "type": "OPACITY",
+          "defaultValue": "0.1"
+        },
+        {
+          "id": "errorLineWeight10",
+          "label": "Error bar line weight 10",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        },
+        {
+          "id": "errorBarWidth10",
+          "label": "Error bar width 10",
+          "type": "LINE_WEIGHT",
+          "defaultValue": "2"
+        }
+      ]
+    }
+  ]  
 }
