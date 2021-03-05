@@ -174,18 +174,12 @@ const drawViz = message => {
   let i;
   // const n_groups = 1
   for (i=0; i<n_groups; i++){
-    console.log(i)
     // Gather all style parameters for series
     const barColor =  themeColor(message, 'barColor'+(i+1), 'themeSeriesColor', i);
-    console.log(barColor)
     const errorLineWeight =  styleVal(message, 'errorLineWeight'+(i+1));
-    console.log(errorLineWeight)
     const errorBarWidth =  styleVal(message, 'errorBarWidth'+(i+1));
-    console.log(errorBarWidth)
     const errorColor =  themeColor(message, 'errorColor'+(i+1), 'themeSeriesColor', i);
-    console.log(errorColor)
     const errorOpacity = styleVal(message, 'errorOpacity'+(i+1));
-    console.log(errorOpacity)
 
     // trace for metric trend line
     const trace_box = {
@@ -231,11 +225,11 @@ const drawViz = message => {
     yAxisLayout.range = 'auto'
   }
   else if (!isNumeric(yAxisMin)){
-    const minValue = Math.min.apply(Math, message.tables.DEFAULT.map(function(d) {return Math.min(...(d.metric - d.metric_error))}));
+    const minValue = Math.min.apply(Math, message.tables.DEFAULT.map(d => d.metric[0] - d.metric_error[0]));
     yAxisLayout.range = [Math.floor(0.9*minValue), yAxisMax];
   }
   else if (!isNumeric(yAxisMax)){
-    const maxValue = Math.max.apply(Math, message.tables.DEFAULT.map(function(d) {return Math.max(...(d.metric + d.metric_error))}));
+    const maxValue = Math.max.apply(Math, message.tables.DEFAULT.map(d => d.metric[0] + d.metric_error[0]));
     yAxisLayout.range = [yAxisMin, Math.ceil(1.1*maxValue)];
   }
   else{
