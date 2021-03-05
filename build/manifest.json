@@ -15,9 +15,9 @@
       "description": "Bar plot with error bars.",
       "iconUrl": "https://url",
       "resource": {
-        "js": "gs://tbackes_viz/bar-plot-error-bars-dev/index.js",
-        "config": "gs://tbackes_viz/bar-plot-error-bars-dev/index.json",
-        "css": "gs://tbackes_viz/bar-plot-error-bars-dev/index.css"
+        "js": "gs://tbackes_viz/bar-plot-error-bars/index.js",
+        "config": "gs://tbackes_viz/bar-plot-error-bars/index.json",
+        "css": "gs://tbackes_viz/bar-plot-error-bars/index.css"
       }
     }
   ]
